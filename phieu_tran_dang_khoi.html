@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Phiếu Đánh Giá Học Sinh - Trần Đăng Khôi</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 6mm 8mm;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #ffffff;
+      color: #372f3d;
+      line-height: 1.35;
+      font-size: 11.5px;
+      padding: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .report-paper {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 12px 18px;
+      border: 1.5px solid #f5d5e2;
+      position: relative;
+    }
+
+    /* Ribbon */
+    .report-top-ribbon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #fde8f0;
+      border: 1px dashed #f28baf;
+      border-radius: 9999px;
+      padding: 2.5px 12px;
+      margin-bottom: 8px;
+    }
+
+    .ribbon-text {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      color: #e87199;
+      text-transform: uppercase;
+    }
+
+    .ribbon-sparkle {
+      font-size: 10px;
+    }
+
+    /* Header */
+    .report-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #fde8f0;
+      margin-bottom: 8px;
+    }
+
+    .report-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .report-avatar-container {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: #fff3f7;
+      border: 1.5px solid #f5d5e2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f28baf;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .report-titles {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .report-main-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #2b1f33;
+      letter-spacing: 0.2px;
+      line-height: 1.15;
+    }
+
+    .report-subtitle {
+      font-size: 10.5px;
+      color: #796681;
+      font-weight: 600;
+      margin-top: 1px;
+    }
+
+    /* Badge Stamp */
+    .report-badge-stamp {
+      background: linear-gradient(135deg, #d0bfff, #9775fa);
+      color: #2d1163;
+      padding: 4px 11px;
+      border-radius: 9999px;
+      font-size: 10.5px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 2px 6px rgba(151, 117, 250, 0.25);
+      transform: rotate(-2deg);
+    }
+
+    /* Meta Card */
+    .report-section-card {
+      background: #fff3f7;
+      border: 1px solid #f5d5e2;
+      border-radius: 10px;
+      padding: 6px 12px;
+      margin-bottom: 8px;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11.5px;
+    }
+
+    .meta-k {
+      color: #7d6b84;
+      font-weight: 500;
+    }
+
+    .meta-v {
+      color: #2b1f33;
+      font-weight: 600;
+    }
+
+    .meta-v-name {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #e87199;
+    }
+
+    .meta-v-subject {
+      background: #ffffff;
+      padding: 1.5px 8px;
+      border-radius: 99px;
+      border: 1px solid #f5d5e2;
+      color: #2b1f33;
+      font-weight: 700;
+    }
+
+    /* Section Bar */
+    .section-title-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .title-left {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #2b1f33;
+      letter-spacing: 0.3px;
+    }
+
+    .title-left i {
+      color: #f28baf;
+    }
+
+    .title-badge {
+      background: #fde8f0;
+      color: #e87199;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 1.5px 7px;
+      border-radius: 99px;
+    }
+
+    .title-sub-note {
+      font-size: 9.5px;
+      color: #8c7894;
+      font-style: italic;
+    }
+
+    /* Table */
+    .report-table-wrapper {
+      border: 1px solid #f5d5e2;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .report-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+      text-align: left;
+    }
+
+    .report-table thead {
+      background: #fde8f0;
+      color: #493354;
+      font-weight: 700;
+    }
+
+    .report-table th,
+    .report-table td {
+      padding: 3.5px 7px;
+      border-bottom: 1px solid #fae7ef;
+      vertical-align: middle;
+    }
+
+    .report-table tbody tr:nth-child(even) {
+      background: #fff8fa;
+    }
+
+    .rep-cell-stt {
+      text-align: center;
+      font-weight: 700;
+      color: #e87199;
+    }
+
+    .rep-cell-date {
+      font-weight: 600;
+      color: #2c2134;
+    }
+
+    .rep-cell-timerange {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #ffffff;
+      padding: 1px 6px;
+      border-radius: 9999px;
+      border: 1px solid #f5d5e2;
+      font-weight: 600;
+      color: #493354;
+      font-size: 10px;
+    }
+
+    .rep-cell-timerange i {
+      color: #f28baf;
+      font-size: 9px;
+    }
+
+    .rep-cell-duration {
+      text-align: center;
+      font-weight: 600;
+      color: #55445d;
+    }
+
+    .rep-cell-fee {
+      text-align: right;
+      font-weight: 700;
+      color: #3d3043;
+    }
+
+    /* Finance 3 Pills */
+    .report-finance-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7px;
+      margin-bottom: 8px;
+    }
+
+    .finance-pill {
+      background: #fff3f7;
+      border: 1px solid #f5d5e2;
+      border-radius: 8px;
+      padding: 4px 7px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .fp-label {
+      font-size: 9px;
+      color: #7b6982;
+      font-weight: 600;
+    }
+
+    .fp-val {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #2b1f33;
+      margin-top: 1px;
+    }
+
+    .finance-pill.highlight {
+      background: #fff0f5;
+      border-color: #f28baf;
+    }
+
+    .fp-total {
+      color: #e87199;
+      font-size: 12px;
+    }
+
+    /* Evaluation Grid */
+    .evaluation-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+      margin-bottom: 7px;
+    }
+
+    .eval-card {
+      background: #ffffff;
+      border: 1px solid #f5d5e2;
+      border-radius: 8px;
+      padding: 5px 8px;
+    }
+
+    .eval-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2px;
+    }
+
+    .eval-name {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #302237;
+    }
+
+    .eval-stars {
+      font-size: 9.5px;
+      color: #ffaa00;
+      letter-spacing: 0.5px;
+    }
+
+    .eval-card-body {
+      font-size: 10px;
+      color: #6a5770;
+      line-height: 1.35;
+    }
+
+    /* Detailed Notes */
+    .report-detailed-notes {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 7px;
+    }
+
+    .note-block {
+      background: #fff3f7;
+      border-left: 3px solid #f28baf;
+      border-radius: 0 6px 6px 0;
+      padding: 5px 9px;
+    }
+
+    .note-block-advice {
+      border-left-color: #6cc4a1;
+      background: #f2fbf7;
+    }
+
+    .note-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: #3b2843;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .note-content {
+      font-size: 10px;
+      color: #55445d;
+      line-height: 1.35;
+      text-align: justify;
+    }
+
+    /* Footer */
+    .report-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 6px;
+      border-top: 1px dashed #f5d5e2;
+    }
+
+    .sign-date-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      font-weight: 600;
+      color: #796682;
+      background: #fff3f7;
+      padding: 2px 12px;
+      border-radius: 9999px;
+      border: 1px solid #fae7ef;
+    }
+
+    .sign-date-badge i {
+      color: #e87199;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="report-paper">
+    <!-- Top Ribbon -->
+    <div class="report-top-ribbon">
+      <span class="ribbon-sparkle">🌸</span>
+      <span class="ribbon-text">PHIẾU ĐÁNH GIÁ HỌC TẬP & TỔNG KẾT HỌC PHÍ</span>
+      <span class="ribbon-sparkle">🌸</span>
+    </div>
+
+    <!-- Header -->
+    <header class="report-header">
+      <div class="report-brand">
+        <div class="report-avatar-container">
+          <i class="fa-solid fa-book-bookmark"></i>
+        </div>
+        <div class="report-titles">
+          <h1 class="report-main-title">PHIẾU ĐÁNH GIÁ HỌC SINH</h1>
+          <p class="report-subtitle">Kỳ học: 15/09/2026 - 25/10/2026</p>
+        </div>
+      </div>
+
+      <!-- Stamp Badge -->
+      <div class="report-badge-stamp">
+        <i class="fa-solid fa-dumbbell"></i>
+        <span>Nỗ Lực Đáng Khen</span>
+      </div>
+    </header>
+
+    <!-- Student Meta Card -->
+    <div class="report-section-card">
+      <div class="meta-row">
+        <div class="meta-item">
+          <span class="meta-k"><i class="fa-regular fa-user"></i> Họ tên học sinh:</span>
+          <strong class="meta-v meta-v-name">Trần Đăng Khôi</strong>
+        </div>
+        <div class="meta-item">
+          <span class="meta-k"><i class="fa-solid fa-school-flag"></i> Lớp:</span>
+          <span class="meta-v">Lớp 5A9</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-k"><i class="fa-solid fa-book"></i> Môn học:</span>
+          <span class="meta-v meta-v-subject">Tiếng Anh</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sessions Table -->
+    <div class="report-section">
+      <div class="section-title-bar">
+        <div class="title-left">
+          <i class="fa-solid fa-calendar-days"></i>
+          <span>DANH SÁCH CÁC BUỔI HỌC</span>
+        </div>
+        <div class="title-badge">10 Buổi Học</div>
+      </div>
+
+      <div class="report-table-wrapper">
+        <table class="report-table">
+          <thead>
+            <tr>
+              <th style="width: 40px; text-align: center;">STT</th>
+              <th style="width: 120px;">Ngày Học</th>
+              <th>Khung Giờ Học</th>
+              <th style="width: 85px; text-align: center;">Thời Lượng</th>
+              <th style="width: 105px; text-align: right;">Học Phí</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="rep-cell-stt">1</td>
+              <td><div class="rep-cell-date">15/09/2026</div></td>
+              <td><div class="rep-cell-timerange"><i class="fa-regular fa-clock"></i> 19:00 – 21:00</div></td>
+              <td class="rep-cell-duration">2 giờ</td>
+              <td class="rep-cell-fee">150.000 đ</td>
+            </tr>
+            <tr>
+              <td class="rep-cell-stt">2</td>
+              <td><div class="rep-cell-date">23/09/2026</div></td>
+              <td><div class="rep-cell-timerange"><i class="fa-regular fa-clock"></i> 19:30 – 21:30</div></td>
+              <td class="rep-cell-duration">2 giờ</td>
+              <td class="rep-cell-fee">150.000 đ</td>
+            </tr>
+            <tr>
+              <td class="rep-cell-stt">3</td>
+              <td><div class="rep-cell-date">27/09/2026</div></td>
+              <td><div class="rep-cell-timerange"><i class="fa-regular fa-clock"></i> 15:00 – 17:00</div></td>
+              <td class="rep-cell-duration">2 giờ</td>
+              <td class="rep-cell-fee">150.000 đ</td>
+            </tr>
+            <tr>
+              <td class="rep-cell-stt">4</td>
+              <td><div class="rep-cell-date">29/09/2026</div></td>
+              <td><div class="rep-cell-timerange"><i class="fa-regular fa-clock"></i> 19:30 – 21:30</div></td>
+              <td class="rep-cell-duration">2 giờ</td>
+              <td class="rep-cell-fee">150.000 đ</td>
+            </tr>
+            <tr>
+              <td class="rep-cell-stt">5</td>
+              <td><div class="rep-cell-date">03/10/2026</div></td>
+              <td><div class="rep-cell-timerange"><i class="fa-regular fa-clock"></i> 19:30 – 21:30</div></td>
+              <td class="rep-cell-duration">2 giờ</td>
+              <td class="rep-cell-fee">150.000 đ</td>
+            </tr>
+            <tr>
+              <td class="rep-cell-stt">6</td>
+              <td><div class="rep-cell-date">06/10/2026</div></td>
+              <td><div class="rep-cell-timerange"><i class="fa-regular fa-clock"></i> 19:00 – 20:30</div></td>
+              <td class="rep-cell-duration">1.5 giờ</td>
+              <td class="rep-cell-fee">150.000 đ</td>
+            </tr>
+            <tr>
+              <td class="rep-cell-stt">7</td>
+              <td><div class="rep-cell-date">11/10/2026</div></td>
+              <td><div class="rep-cell-timerange"><i class="fa-regular fa-clock"></i> 15:00 – 17:00</div></td>
+              <td class="rep-cell-duration">2 giờ</td>
+              <td class="rep-cell-fee">150.000 đ</td>
+            </tr>
+            <tr>
+              <td class="rep-cell-stt">8</td>
+              <td><div class="rep-cell-date">13/10/2026</div></td>
+              <td><div class="rep-cell-timerange"><i class="fa-regular fa-clock"></i> 18:30 – 20:30</div></td>
+              <td class="rep-cell-duration">2 giờ</td>
+              <td class="rep-cell-fee">150.000 đ</td>
+            </tr>
+            <tr>
+              <td class="rep-cell-stt">9</td>
+              <td><div class="rep-cell-date">18/10/2026</div></td>
+              <td><div class="rep-cell-timerange"><i class="fa-regular fa-clock"></i> 15:00 – 17:00</div></td>
+              <td class="rep-cell-duration">2 giờ</td>
+              <td class="rep-cell-fee">150.000 đ</td>
+            </tr>
+            <tr>
+              <td class="rep-cell-stt">10</td>
+              <td><div class="rep-cell-date">25/10/2026</div></td>
+              <td><div class="rep-cell-timerange"><i class="fa-regular fa-clock"></i> 08:00 – 10:00</div></td>
+              <td class="rep-cell-duration">2 giờ</td>
+              <td class="rep-cell-fee">150.000 đ</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Financial Summary (3 Pills) -->
+    <div class="report-finance-grid">
+      <div class="finance-pill">
+        <span class="fp-label">Tổng số buổi:</span>
+        <strong class="fp-val">10 buổi</strong>
+      </div>
+      <div class="finance-pill">
+        <span class="fp-label">Tổng thời lượng:</span>
+        <strong class="fp-val">19.5 giờ</strong>
+      </div>
+      <div class="finance-pill highlight">
+        <span class="fp-label">Tổng tiền học phí:</span>
+        <strong class="fp-val fp-total">1.500.000 đ</strong>
+      </div>
+    </div>
+
+    <!-- Evaluation Section -->
+    <div class="report-section">
+      <div class="section-title-bar">
+        <div class="title-left">
+          <i class="fa-solid fa-star-half-stroke"></i>
+          <span>ĐÁNH GIÁ TỔNG HỢP TOÀN KỲ</span>
+        </div>
+        <span class="title-sub-note">Nhận xét tiến trình học tập của học sinh</span>
+      </div>
+
+      <div class="evaluation-grid">
+        <div class="eval-card">
+          <div class="eval-card-header">
+            <span class="eval-name">Thái độ học tập:</span>
+            <div class="eval-stars">⭐⭐⭐⭐☆</div>
+          </div>
+          <div class="eval-card-body">Khá nghiêm túc, lễ phép nhưng đôi lúc chưa thực sự tập trung nghe giảng</div>
+        </div>
+
+        <div class="eval-card">
+          <div class="eval-card-header">
+            <span class="eval-name">Tinh thần tự giác:</span>
+            <div class="eval-stars">⭐⭐⭐☆☆</div>
+          </div>
+          <div class="eval-card-body">Chủ động ôn từ vựng</div>
+        </div>
+
+        <div class="eval-card">
+          <div class="eval-card-header">
+            <span class="eval-name">Tiếp thu kiến thức:</span>
+            <div class="eval-stars">⭐⭐⭐☆☆</div>
+          </div>
+          <div class="eval-card-body">Nắm chắc về phần từ mới nhưng ngữ pháp chưa nhớ nhiều, không tập trung khi học ngữ pháp</div>
+        </div>
+
+        <div class="eval-card">
+          <div class="eval-card-header">
+            <span class="eval-name">Mức độ tiến bộ:</span>
+            <div class="eval-stars">⭐⭐⭐☆☆</div>
+          </div>
+          <div class="eval-card-body">Khá tiến bộ so với ban đầu</div>
+        </div>
+      </div>
+
+      <!-- Detailed Notes -->
+      <div class="report-detailed-notes">
+        <div class="note-block">
+          <div class="note-title"><i class="fa-solid fa-quote-left"></i> Nhận xét chung:</div>
+          <div class="note-content">
+            em nhận thấy Khôi có khả năng tiếp thu kiến thức khá nhanh, đặc biệt là phần từ vựng. Em ghi nhớ từ mới tương đối tốt và có nền tảng từ vựng khá ổn. Tuy nhiên, kỹ năng nghe của em vẫn còn hạn chế và cần được luyện tập thêm để cải thiện khả năng nghe hiểu. Bên cạnh đó, trong giờ học, đôi lúc Khôi còn mất tập trung; khi được nhắc nhở chú ý vào bài, em chưa thực sự chủ động điều chỉnh nên ảnh hưởng phần nào đến hiệu quả học tập.
+          </div>
+        </div>
+
+        <div class="note-block note-block-advice">
+          <div class="note-title"><i class="fa-solid fa-heart-pulse"></i> Dặn dò & Lời nhắn phụ huynh:</div>
+          <div class="note-content">
+            Trong thời gian tới, em sẽ tiếp tục hỗ trợ Khôi củng cố từ vựng, rèn luyện kỹ năng nghe và cải thiện sự tập trung. Em cũng mong dì có thể động viên Khôi chú ý hơn trong giờ học và dành thêm thời gian luyện nghe ở nhà để đạt kết quả tiến bộ hơn ạ
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Date -->
+    <footer class="report-footer">
+      <div class="sign-date-badge">
+        <i class="fa-regular fa-calendar-check"></i>
+        <span>Ngày 25 tháng 10 năm 2026</span>
+      </div>
+    </footer>
+  </div>
+
+</body>
+</html>

@@ -1550,3 +1550,36 @@ textarea {
     align-items: flex-start;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Mobile Viewport Fix for emxuyeu
+   Ensure preview top ribbon and export toolbar are clearly visible on phones
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .preview-column.mobile-active {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+    gap: 14px;
+  }
+
+  .export-toolbar {
+    position: sticky;
+    top: calc(var(--header-height) + 52px);
+    z-index: 35;
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 16px rgba(184, 142, 160, 0.18);
+  }
+
+  .preview-viewport {
+    padding: 8px 4px 40px 4px;
+    background: transparent;
+    border: none;
+  }
+
+  .report-paper {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+}
