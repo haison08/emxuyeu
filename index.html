@@ -9,10 +9,10 @@
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20viewBox=%220%200%20100%20100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
 
-  <!-- Google Fonts: Quicksand & Playfair Display & Dancing Script -->
+  <!-- Google Fonts: Quicksand & Playfair Display -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -85,12 +85,12 @@
             <div class="header-icon"><i class="fa-solid fa-graduation-cap"></i></div>
             <div>
               <h2 class="card-title">1. Thông Tin Học Sinh & Khóa Học</h2>
-              <p class="card-desc">Thông tin chung hiển thị ở đầu phiếu đánh giá gửi phụ huynh</p>
+              <p class="card-desc">Thông tin học sinh hiển thị ở đầu phiếu gửi phụ huynh</p>
             </div>
           </div>
 
           <div class="card-body">
-            <div class="form-grid grid-2">
+            <div class="form-grid grid-3">
               <div class="form-group">
                 <label for="studentName"><i class="fa-solid fa-user"></i> Họ & Tên Học Sinh <span class="req">*</span></label>
                 <input type="text" id="studentName" placeholder="VD: Nguyễn Bảo Châu" required autocomplete="off">
@@ -98,27 +98,12 @@
 
               <div class="form-group">
                 <label for="studentGrade"><i class="fa-solid fa-school"></i> Lớp / Khối Học <span class="req">*</span></label>
-                <input type="text" id="studentGrade" placeholder="VD: Lớp 9A2 - THCS Đoàn Thị Điểm">
+                <input type="text" id="studentGrade" placeholder="VD: Lớp 9A2">
               </div>
 
               <div class="form-group">
                 <label for="subjectName"><i class="fa-solid fa-book-open"></i> Môn Học <span class="req">*</span></label>
-                <input type="text" id="subjectName" placeholder="VD: Toán Nâng Cao & Hình Học">
-              </div>
-
-              <div class="form-group">
-                <label for="parentName"><i class="fa-solid fa-user-group"></i> Kính Gửi Phụ Huynh</label>
-                <input type="text" id="parentName" placeholder="VD: Chị Mai Phương (Mẹ bé Châu)">
-              </div>
-
-              <div class="form-group">
-                <label for="tutorName"><i class="fa-solid fa-chalkboard-user"></i> Gia Sư Phụ Trách <span class="req">*</span></label>
-                <input type="text" id="tutorName" placeholder="VD: Thầy Hoàng Phúc (ĐH Sư Phạm)">
-              </div>
-
-              <div class="form-group">
-                <label for="tutorContact"><i class="fa-solid fa-phone"></i> SĐT / Zalo Gia Sư</label>
-                <input type="text" id="tutorContact" placeholder="VD: 0988.xxx.xxx">
+                <input type="text" id="subjectName" placeholder="VD: Môn Toán">
               </div>
             </div>
 
@@ -133,7 +118,7 @@
               </div>
             </div>
 
-            <!-- Optional Student Avatar or Tutor Badge -->
+            <!-- Optional Student Avatar or Logo -->
             <div class="avatar-upload-box mt-3">
               <div class="avatar-preview-wrapper" id="avatarPreviewBox">
                 <img id="avatarImg" src="" alt="Avatar" class="avatar-img hidden">
@@ -146,21 +131,21 @@
                   <i class="fa-solid fa-arrow-up-from-bracket"></i> Đổi ảnh đại diện / Logo
                   <input type="file" id="avatarInput" accept="image/*" class="sr-only">
                 </label>
-                <span class="upload-hint">Tùy chọn. Hiển thị góc trên phiếu cho thêm phần chuyên nghiệp</span>
+                <span class="upload-hint">Tùy chọn. Hiển thị góc trên phiếu cho thêm phần đáng yêu</span>
                 <button type="button" id="btnRemoveAvatar" class="btn-link-danger hidden">Gỡ ảnh</button>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Step 2: Learning Sessions (Dynamic Table) -->
+        <!-- Step 2: Learning Sessions (Dynamic Table with Time Range) -->
         <div class="form-card">
           <div class="card-header card-header-split">
             <div class="header-left">
               <div class="header-icon"><i class="fa-solid fa-calendar-check"></i></div>
               <div>
-                <h2 class="card-title">2. Chi Tiết Các Buổi Học</h2>
-                <p class="card-desc">Ghi chép ngày giờ, nội dung đã dạy và dặn dò từng buổi</p>
+                <h2 class="card-title">2. Danh Sách Các Buổi Học</h2>
+                <p class="card-desc">Ghi nhận ngày học, khung giờ bắt đầu – kết thúc và học phí</p>
               </div>
             </div>
             <button type="button" id="btnAddSession" class="btn btn-primary btn-sm">
@@ -188,7 +173,7 @@
             <div class="header-icon"><i class="fa-solid fa-coins"></i></div>
             <div>
               <h2 class="card-title">3. Tổng Kết Học Phí</h2>
-              <p class="card-desc">Hệ thống tự động cộng dồn học phí và tính số dư còn lại</p>
+              <p class="card-desc">Hệ thống tự động cộng dồn số buổi, tổng giờ và tổng tiền học</p>
             </div>
           </div>
 
@@ -205,30 +190,10 @@
                 <span class="stat-unit">giờ</span>
               </div>
               <div class="stat-box stat-highlight">
-                <span class="stat-label">Tổng học phí</span>
+                <span class="stat-label">Tổng tiền học phí</span>
                 <strong class="stat-value" id="calcTotalFee">0 đ</strong>
                 <span class="stat-unit">toàn kỳ</span>
               </div>
-            </div>
-
-            <div class="form-grid grid-2 mt-4">
-              <div class="form-group">
-                <label for="amountPaid"><i class="fa-solid fa-hand-holding-dollar"></i> Đã Thanh Toán (VNĐ)</label>
-                <div class="input-with-suffix">
-                  <input type="number" id="amountPaid" min="0" step="10000" placeholder="0">
-                  <span class="suffix">VNĐ</span>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label><i class="fa-solid fa-receipt"></i> Còn Lại Cần Thanh Toán</label>
-                <div class="remaining-badge" id="calcRemaining">0 đ</div>
-              </div>
-            </div>
-
-            <div class="form-group mt-3">
-              <label for="paymentNote"><i class="fa-regular fa-credit-card"></i> Thông Tin Chuyển Khoản / Ghi Chú Học Phí</label>
-              <input type="text" id="paymentNote" placeholder="VD: STK Vietcombank 0123456789 - Nguyễn Hoàng Phúc">
             </div>
           </div>
         </div>
@@ -239,7 +204,7 @@
             <div class="header-icon"><i class="fa-solid fa-star"></i></div>
             <div>
               <h2 class="card-title">4. Đánh Giá Tổng Hợp Toàn Kỳ</h2>
-              <p class="card-desc">Đánh giá chung 1 lần cho cả đợt học (không cần chấm từng buổi lẻ)</p>
+              <p class="card-desc">Đánh giá chung 1 lần cho cả đợt học của học sinh</p>
             </div>
           </div>
 
@@ -265,7 +230,7 @@
               <div class="rating-row" data-criteria="diligence">
                 <div class="rating-info">
                   <span class="rating-title"><i class="fa-solid fa-bolt"></i> Tinh thần tự giác</span>
-                  <span class="rating-sub">Làm bài tập về nhà, chủ động hỏi bài</span>
+                  <span class="rating-sub">Chủ động học tập và hỏi bài</span>
                 </div>
                 <div class="star-rating" data-name="ratingDiligence">
                   <button type="button" class="star-btn" data-value="1"><i class="fa-solid fa-star"></i></button>
@@ -277,11 +242,11 @@
                 <input type="text" class="rating-comment-input" id="commentDiligence" placeholder="Nhận xét ngắn về tính tự giác...">
               </div>
 
-              <!-- Rating 3: Nắm bắt kiến thức -->
+              <!-- Rating 3: Tiếp thu kiến thức -->
               <div class="rating-row" data-criteria="knowledge">
                 <div class="rating-info">
                   <span class="rating-title"><i class="fa-solid fa-brain"></i> Tiếp thu & Kết quả</span>
-                  <span class="rating-sub">Hiểu bài, làm đúng bài tập</span>
+                  <span class="rating-sub">Khả năng nắm bắt kiến thức</span>
                 </div>
                 <div class="star-rating" data-name="ratingKnowledge">
                   <button type="button" class="star-btn" data-value="1"><i class="fa-solid fa-star"></i></button>
@@ -290,14 +255,14 @@
                   <button type="button" class="star-btn active" data-value="4"><i class="fa-solid fa-star"></i></button>
                   <button type="button" class="star-btn" data-value="5"><i class="fa-solid fa-star"></i></button>
                 </div>
-                <input type="text" class="rating-comment-input" id="commentKnowledge" placeholder="Nhận xét ngắn về khả năng hiểu bài...">
+                <input type="text" class="rating-comment-input" id="commentKnowledge" placeholder="Nhận xét về khả năng hiểu bài...">
               </div>
 
               <!-- Rating 4: Mức độ tiến bộ -->
               <div class="rating-row" data-criteria="progress">
                 <div class="rating-info">
                   <span class="rating-title"><i class="fa-solid fa-chart-line"></i> Mức độ tiến bộ</span>
-                  <span class="rating-sub">So với thời điểm bắt đầu kỳ học</span>
+                  <span class="rating-sub">So với thời điểm bắt đầu</span>
                 </div>
                 <div class="star-rating" data-name="ratingProgress">
                   <button type="button" class="star-btn" data-value="1"><i class="fa-solid fa-star"></i></button>
@@ -313,20 +278,20 @@
             <!-- Detailed Notes -->
             <div class="form-group mt-4">
               <label for="overallComment"><i class="fa-solid fa-comment-dots"></i> Nhận Xét Chung Toàn Kỳ</label>
-              <textarea id="overallComment" rows="3" placeholder="Ghi nhận xét chi tiết về tình hình học tập, điểm mạnh và điểm cần cải thiện của con..."></textarea>
+              <textarea id="overallComment" rows="3" placeholder="Ghi nhận xét chi tiết về tình hình học tập, ưu điểm và định hướng của con..."></textarea>
             </div>
 
             <div class="form-group mt-3">
               <label for="parentAdvice"><i class="fa-solid fa-envelope-open-text"></i> Dặn Dò & Lời Nhắn Đến Phụ Huynh</label>
-              <textarea id="parentAdvice" rows="3" placeholder="Gia sư nhắn nhủ quý phụ huynh đồng hành, nhắc nhở con ôn tập hoặc lịch thi sắp tới..."></textarea>
+              <textarea id="parentAdvice" rows="3" placeholder="Dặn dò phụ huynh cùng đồng hành, nhắc nhở con ôn tập..."></textarea>
             </div>
 
             <div class="form-grid grid-2 mt-3">
               <div class="form-group">
                 <label for="stampBadge"><i class="fa-solid fa-stamp"></i> Danh Hiệu / Huy Hiệu Động Viên</label>
                 <select id="stampBadge">
-                  <option value="star">🌟 Ngôi Sao Chăm Chỉ</option>
                   <option value="progress" selected>🚀 Tiến Bộ Vượt Bậc</option>
+                  <option value="star">🌟 Ngôi Sao Chăm Chỉ</option>
                   <option value="excellent">🏆 Học Tập Xuất Sắc</option>
                   <option value="effort">💪 Nỗ Lực Đáng Khen</option>
                   <option value="none">Không hiển thị huy hiệu</option>
@@ -373,7 +338,7 @@
           <!-- Decorative Top Ribbon -->
           <div class="report-top-ribbon">
             <span class="ribbon-sparkle">🌸</span>
-            <span class="ribbon-text">SỔ ĐÁNH GIÁ HỌC TẬP & THEO DÕI HỌC PHÍ</span>
+            <span class="ribbon-text">PHIẾU ĐÁNH GIÁ HỌC TẬP & TỔNG KẾT HỌC PHÍ</span>
             <span class="ribbon-sparkle">🌸</span>
           </div>
 
@@ -399,11 +364,11 @@
             </div>
           </header>
 
-          <!-- Section: Student & Tutor Meta Card -->
+          <!-- Section: Student Meta Card (Refined, clean) -->
           <div class="report-section-card meta-box">
             <div class="meta-row">
               <div class="meta-item">
-                <span class="meta-k"><i class="fa-regular fa-user"></i> Học sinh:</span>
+                <span class="meta-k"><i class="fa-regular fa-user"></i> Họ tên học sinh:</span>
                 <strong class="meta-v meta-v-name" id="repStudentName">Nguyễn Bảo Châu</strong>
               </div>
               <div class="meta-item">
@@ -415,29 +380,14 @@
                 <span class="meta-v meta-v-subject" id="repSubjectName">Toán Học</span>
               </div>
             </div>
-
-            <div class="meta-row meta-row-sub">
-              <div class="meta-item">
-                <span class="meta-k"><i class="fa-regular fa-heart"></i> Kính gửi:</span>
-                <span class="meta-v" id="repParentName">Quý Phụ Huynh</span>
-              </div>
-              <div class="meta-item">
-                <span class="meta-k"><i class="fa-solid fa-chalkboard-user"></i> Gia sư:</span>
-                <span class="meta-v" id="repTutorName">Thầy Hoàng Phúc</span>
-              </div>
-              <div class="meta-item">
-                <span class="meta-k"><i class="fa-solid fa-phone"></i> Liên hệ:</span>
-                <span class="meta-v" id="repTutorContact">0988.xxx.xxx</span>
-              </div>
-            </div>
           </div>
 
-          <!-- Section: Learning Sessions Table -->
+          <!-- Section: Learning Sessions Table (Clean with Time Range) -->
           <div class="report-section">
             <div class="section-title-bar">
               <div class="title-left">
                 <i class="fa-solid fa-calendar-days"></i>
-                <span>NHẬT KÝ CÁC BUỔI HỌC</span>
+                <span>DANH SÁCH CÁC BUỔI HỌC</span>
               </div>
               <div class="title-badge" id="repSessionCountBadge">8 Buổi Học</div>
             </div>
@@ -446,11 +396,11 @@
               <table class="report-table" id="repSessionsTable">
                 <thead>
                   <tr>
-                    <th style="width: 42px;">STT</th>
-                    <th style="width: 105px;">Ngày & Giờ</th>
-                    <th style="width: 60px;">Thời Lượng</th>
-                    <th>Nội Dung Buổi Học & Dặn Dò</th>
-                    <th style="width: 95px; text-align: right;">Học Phí</th>
+                    <th style="width: 48px; text-align: center;">STT</th>
+                    <th style="width: 140px;">Ngày Học</th>
+                    <th>Khung Giờ Học</th>
+                    <th style="width: 100px; text-align: center;">Thời Lượng</th>
+                    <th style="width: 125px; text-align: right;">Học Phí</th>
                   </tr>
                 </thead>
                 <tbody id="repSessionsBody">
@@ -460,7 +410,7 @@
             </div>
           </div>
 
-          <!-- Section: Financial Summary Box -->
+          <!-- Section: Financial Summary Box (Clean 3-pill stats) -->
           <div class="report-finance-grid">
             <div class="finance-pill">
               <span class="fp-label">Tổng số buổi:</span>
@@ -471,23 +421,9 @@
               <strong class="fp-val" id="repTotalHours">16 giờ</strong>
             </div>
             <div class="finance-pill highlight">
-              <span class="fp-label">Tổng học phí:</span>
+              <span class="fp-label">Tổng tiền học phí:</span>
               <strong class="fp-val fp-total" id="repTotalFee">1.600.000 đ</strong>
             </div>
-            <div class="finance-pill">
-              <span class="fp-label">Đã thanh toán:</span>
-              <strong class="fp-val" id="repAmountPaid">0 đ</strong>
-            </div>
-            <div class="finance-pill remain" id="repRemainingWrapper">
-              <span class="fp-label">Còn lại:</span>
-              <strong class="fp-val fp-remain" id="repRemaining">1.600.000 đ</strong>
-            </div>
-          </div>
-
-          <!-- Payment Transfer Info If Provided -->
-          <div class="report-payment-info" id="repPaymentInfoBox">
-            <i class="fa-solid fa-building-columns"></i>
-            <span id="repPaymentNote">STK Vietcombank: 0123456789 - Nguyễn Hoàng Phúc</span>
           </div>
 
           <!-- Section: Overall Assessment & Stars -->
@@ -497,7 +433,7 @@
                 <i class="fa-solid fa-star-half-stroke"></i>
                 <span>ĐÁNH GIÁ TỔNG HỢP TOÀN KỲ</span>
               </div>
-              <span class="title-sub-note">Nhận xét tổng kết tiến trình học tập</span>
+              <span class="title-sub-note">Nhận xét tiến trình học tập của học sinh</span>
             </div>
 
             <div class="evaluation-grid">
@@ -537,14 +473,14 @@
             <!-- Detailed Notes -->
             <div class="report-detailed-notes">
               <div class="note-block" id="repOverallCommentBox">
-                <div class="note-title"><i class="fa-solid fa-quote-left"></i> Nhận xét chung của gia sư:</div>
+                <div class="note-title"><i class="fa-solid fa-quote-left"></i> Nhận xét chung:</div>
                 <div class="note-content" id="repOverallComment">
                   Em Châu là học sinh thông minh, nhanh nhẹn. Trong kỳ học vừa qua con đã cải thiện rõ rệt phần hình học không gian và các dạng toán giải phương trình nâng cao.
                 </div>
               </div>
 
               <div class="note-block note-block-advice" id="repParentAdviceBox">
-                <div class="note-title"><i class="fa-solid fa-heart-pulse"></i> Dặn dò & Phối hợp cùng phụ huynh:</div>
+                <div class="note-title"><i class="fa-solid fa-heart-pulse"></i> Dặn dò & Lời nhắn phụ huynh:</div>
                 <div class="note-content" id="repParentAdvice">
                   Nhờ mẹ nhắc con ôn lại các dạng bài tập chương 2 mỗi tối khoảng 20 phút. Thầy sẽ tiếp tục gửi đề luyện thi vào tuần sau.
                 </div>
@@ -552,20 +488,10 @@
             </div>
           </div>
 
-          <!-- Report Footer: Signature & Date -->
+          <!-- Report Footer: Clean Date Only -->
           <footer class="report-footer">
-            <div class="footer-left">
-              <p class="footer-tagline">Ứng dụng tạo phiếu gia sư <strong>emxuyeu</strong> 🌸</p>
-              <p class="footer-sub">Chúc con luôn chăm ngoan và đạt điểm số thật cao!</p>
-            </div>
-
-            <div class="footer-right">
-              <p class="sign-date" id="repReportDate">Ngày 25 tháng 10 năm 2026</p>
-              <p class="sign-role">GIA SƯ PHỤ TRÁCH</p>
-              <div class="signature-canvas-area">
-                <span class="handwritten-sign" id="repSignatureName">Hoàng Phúc</span>
-              </div>
-              <p class="sign-full-name" id="repTutorSignBottom">Nguyễn Hoàng Phúc</p>
+            <div class="report-footer-center">
+              <span class="sign-date-badge"><i class="fa-regular fa-calendar-check"></i> <span id="repReportDate">Ngày 25 tháng 10 năm 2026</span></span>
             </div>
           </footer>
         </div>

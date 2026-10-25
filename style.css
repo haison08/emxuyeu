@@ -50,7 +50,6 @@
   /* Fonts */
   --font-sans: 'Quicksand', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
-  --font-hand: 'Dancing Script', cursive;
   
   /* Layout */
   --header-height: 68px;
@@ -511,6 +510,10 @@ body {
   grid-template-columns: repeat(2, 1fr);
 }
 
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -575,25 +578,6 @@ textarea {
 
 .mt-3 { margin-top: 12px; }
 .mt-4 { margin-top: 16px; }
-
-.input-with-suffix {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.input-with-suffix input {
-  padding-right: 48px;
-}
-
-.input-with-suffix .suffix {
-  position: absolute;
-  right: 12px;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text-muted);
-  pointer-events: none;
-}
 
 /* Avatar Upload Box */
 .avatar-upload-box {
@@ -688,7 +672,7 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   8. Sessions Dynamic Container
+   8. Sessions Dynamic Container (With Time Range Start/End)
    -------------------------------------------------------------------------- */
 .sessions-container {
   display: flex;
@@ -732,10 +716,11 @@ textarea {
   gap: 5px;
 }
 
+/* Compact, clean 4-column layout for time range sessions */
 .session-fields-grid {
   display: grid;
-  grid-template-columns: 140px 105px 85px 1fr 125px;
-  gap: 8px;
+  grid-template-columns: 145px 120px 120px 90px 1fr;
+  gap: 10px;
   align-items: start;
 }
 
@@ -768,19 +753,19 @@ textarea {
 }
 
 /* --------------------------------------------------------------------------
-   9. Finance Stats Box
+   9. Finance Stats Box (3 Balanced Cards)
    -------------------------------------------------------------------------- */
 .finance-stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 14px;
 }
 
 .stat-box {
   background: var(--theme-primary-light);
   border: 1px solid var(--theme-border-subtle);
   border-radius: var(--radius-md);
-  padding: 12px 14px;
+  padding: 14px 16px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -801,10 +786,10 @@ textarea {
 }
 
 .stat-value {
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 700;
   color: var(--text-main);
-  margin: 3px 0;
+  margin: 4px 0;
   letter-spacing: -0.5px;
 }
 
@@ -815,18 +800,6 @@ textarea {
 .stat-unit {
   font-size: 11px;
   color: var(--text-light);
-}
-
-.remaining-badge {
-  padding: 9px 14px;
-  background: #ffffff;
-  border: 1.5px solid var(--theme-border);
-  border-radius: var(--radius-md);
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--color-danger);
-  display: flex;
-  align-items: center;
 }
 
 /* --------------------------------------------------------------------------
@@ -976,7 +949,6 @@ textarea {
 
 /* --------------------------------------------------------------------------
    12. The Report Paper (Exportable & Printable Canvas)
-   Designed like an aesthetic Japanese / Korean study diary & report
    -------------------------------------------------------------------------- */
 .report-paper {
   width: 100%;
@@ -1095,12 +1067,12 @@ textarea {
   transform: rotate(-2deg);
 }
 
-/* Meta Card */
+/* Meta Card (Refined, Clean) */
 .report-section-card {
   background: var(--theme-primary-light);
   border: 1px solid var(--theme-border);
   border-radius: 14px;
-  padding: 10px 14px;
+  padding: 11px 16px;
   margin-bottom: 14px;
 }
 
@@ -1108,21 +1080,15 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
-}
-
-.meta-row-sub {
-  margin-top: 6px;
-  padding-top: 6px;
-  border-top: 1px dashed var(--theme-border);
 }
 
 .meta-item {
   display: flex;
   align-items: center;
-  gap: 5px;
-  font-size: 12px;
+  gap: 6px;
+  font-size: 12.5px;
 }
 
 .meta-k {
@@ -1136,14 +1102,14 @@ textarea {
 }
 
 .meta-v-name {
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--theme-primary);
 }
 
 .meta-v-subject {
   background: #ffffff;
-  padding: 1px 8px;
+  padding: 2px 10px;
   border-radius: 99px;
   border: 1px solid var(--theme-border);
   color: #2b1f33;
@@ -1197,7 +1163,7 @@ textarea {
 .report-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 11.5px;
+  font-size: 12px;
   text-align: left;
 }
 
@@ -1209,9 +1175,9 @@ textarea {
 
 .report-table th,
 .report-table td {
-  padding: 6px 8px;
+  padding: 8px 10px;
   border-bottom: 1px solid var(--theme-border-subtle);
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 .report-table tbody tr:nth-child(even) {
@@ -1229,26 +1195,28 @@ textarea {
   color: #2c2134;
 }
 
-.rep-cell-time {
-  font-size: 10.5px;
-  color: #7e6c86;
-}
-
-.rep-cell-content-title {
-  font-weight: 600;
-  color: #2b1f33;
-  margin-bottom: 2px;
-}
-
-.rep-cell-homework {
-  font-size: 10.5px;
-  color: #7e6c86;
+.rep-cell-timerange {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background: #ffffff;
-  padding: 2px 6px;
-  border-radius: 4px;
-  display: inline-block;
-  margin-top: 2px;
-  border: 1px dashed var(--theme-border);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--theme-border);
+  font-weight: 600;
+  color: #493354;
+  font-size: 11.5px;
+}
+
+.rep-cell-timerange i {
+  color: var(--theme-primary);
+  font-size: 11px;
+}
+
+.rep-cell-duration {
+  text-align: center;
+  font-weight: 600;
+  color: #55445d;
 }
 
 .rep-cell-fee {
@@ -1257,35 +1225,35 @@ textarea {
   color: #3d3043;
 }
 
-/* Financial Pills Grid */
+/* Financial Pills Grid (3 balanced pills) */
 .report-finance-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 6px;
-  margin-bottom: 8px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
 }
 
 .finance-pill {
   background: var(--theme-primary-light);
   border: 1px solid var(--theme-border);
-  border-radius: 8px;
-  padding: 6px 6px;
+  border-radius: 10px;
+  padding: 8px 10px;
   text-align: center;
   display: flex;
   flex-direction: column;
 }
 
 .fp-label {
-  font-size: 9.5px;
+  font-size: 10.5px;
   color: #7b6982;
   font-weight: 600;
 }
 
 .fp-val {
-  font-size: 11.5px;
+  font-size: 13.5px;
   font-weight: 700;
   color: #2b1f33;
-  margin-top: 1px;
+  margin-top: 2px;
 }
 
 .finance-pill.highlight {
@@ -1294,30 +1262,7 @@ textarea {
 }
 .fp-total {
   color: var(--theme-primary);
-}
-
-.finance-pill.remain {
-  background: #fff4f4;
-  border-color: #f7b4b1;
-}
-.fp-remain {
-  color: var(--color-danger);
-}
-
-.report-payment-info {
-  background: #fdfbf7;
-  border: 1px dashed #e8d7c0;
-  border-radius: 8px;
-  padding: 5px 10px;
-  font-size: 11px;
-  color: #6d5b46;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 14px;
-}
-.report-payment-info i {
-  color: #d1973b;
+  font-size: 14px;
 }
 
 /* Evaluation Grid (Overall 4 Stars) */
@@ -1395,75 +1340,36 @@ textarea {
   line-height: 1.45;
 }
 
-/* Report Footer: Signature */
+/* Report Footer: Clean Minimal Date Badge */
 .report-footer {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  padding-top: 10px;
+  align-items: center;
+  justify-content: center;
+  padding-top: 12px;
   border-top: 1.5px dashed var(--theme-border);
 }
 
-.footer-left {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.footer-tagline {
-  font-size: 10.5px;
-  color: #8c7694;
-}
-
-.footer-sub {
-  font-size: 10px;
-  color: #a491ac;
-  font-style: italic;
-}
-
-.footer-right {
-  text-align: right;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.sign-date {
-  font-size: 10.5px;
-  color: #796682;
-  font-style: italic;
-}
-
-.sign-role {
-  font-size: 10.5px;
-  font-weight: 700;
-  color: #2b1e32;
-  letter-spacing: 0.5px;
-  margin-top: 2px;
-}
-
-.signature-canvas-area {
-  height: 38px;
+.report-footer-center {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
-.handwritten-sign {
-  font-family: var(--font-hand);
-  font-size: 26px;
-  color: #2b3990;
-  transform: rotate(-4deg);
-}
-
-.sign-full-name {
+.sign-date-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   font-size: 11.5px;
-  font-weight: 700;
-  color: #302237;
-  border-top: 1px solid #d4c5d9;
-  padding-top: 2px;
-  min-width: 120px;
-  text-align: center;
+  font-weight: 600;
+  color: #796682;
+  background: var(--theme-primary-light);
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--theme-border-subtle);
+}
+
+.sign-date-badge i {
+  color: var(--theme-primary);
 }
 
 /* --------------------------------------------------------------------------
@@ -1584,7 +1490,7 @@ textarea {
   .preview-column {
     position: static;
     max-height: none;
-    display: none; /* Controlled by mobile tabs */
+    display: none;
   }
 
   .preview-column.mobile-active {
@@ -1606,24 +1512,20 @@ textarea {
   }
 
   .theme-selector-wrapper {
-    display: none; /* Hide in narrow header */
+    display: none;
   }
 
   .brand-title {
     font-size: 19px;
   }
 
-  .grid-2 {
+  .grid-2, .grid-3 {
     grid-template-columns: 1fr;
   }
 
   .session-fields-grid {
     grid-template-columns: 1fr 1fr;
     gap: 8px;
-  }
-
-  .session-fields-grid .form-group:nth-child(4) {
-    grid-column: span 2;
   }
 
   .finance-stats-grid {
@@ -1636,11 +1538,7 @@ textarea {
   }
 
   .report-finance-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .report-finance-grid .finance-pill:last-child {
-    grid-column: span 2;
+    grid-template-columns: 1fr;
   }
 
   .evaluation-grid {

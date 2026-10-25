@@ -1,107 +1,36 @@
 /**
  * emxuyeu - Sổ Gia Sư Đáng Yêu
- * Core Application Logic & State Management
+ * Core Application Logic & State Management (Refined Layout)
  */
 
-// Initial Sample State (Preloaded for instant delight)
+// Initial Sample State
 const DEFAULT_SAMPLE_STATE = {
   theme: 'sakura',
   studentInfo: {
     name: 'Nguyễn Bảo Châu',
-    grade: 'Lớp 9A2 - THCS Đoàn Thị Điểm',
-    subject: 'Toán Học (Đại Số & Hình Học)',
-    parent: 'Chị Mai Phương (Mẹ bé Châu)',
-    tutor: 'Thầy Hoàng Phúc',
-    contact: '0988.234.567',
+    grade: 'Lớp 9A2',
+    subject: 'Toán Học',
     periodFrom: '2026-10-01',
     periodTo: '2026-10-25',
     avatar: ''
   },
   sessions: [
-    {
-      id: 's_1',
-      date: '2026-10-02',
-      time: '18:00',
-      hours: 2,
-      content: 'Chuyên đề Bất đẳng thức Cô-si và các bài toán cực trị đại số.',
-      homework: 'Làm bài tập phiếu số 1 (bài 3, 4, 5).',
-      fee: 200000
-    },
-    {
-      id: 's_2',
-      date: '2026-10-05',
-      time: '18:00',
-      hours: 2,
-      content: 'Hình học: Chứng minh tứ giác nội tiếp đường tròn & góc tạo bởi tia tiếp tuyến.',
-      homework: 'Vẽ hình và hoàn thành 3 bài chứng minh vào vở.',
-      fee: 200000
-    },
-    {
-      id: 's_3',
-      date: '2026-10-09',
-      time: '18:00',
-      hours: 2,
-      content: 'Luyện tập giải hệ phương trình chứa tham số m & điều kiện có nghiệm duy nhất.',
-      homework: 'Ôn lại các bước lập luận định thức.',
-      fee: 200000
-    },
-    {
-      id: 's_4',
-      date: '2026-10-12',
-      time: '18:00',
-      hours: 2,
-      content: 'Hình học: Hệ thức lượng trong tam giác vuông & ứng dụng góc phụ.',
-      homework: 'Làm 4 bài tập áp dụng SGK nâng cao.',
-      fee: 200000
-    },
-    {
-      id: 's_5',
-      date: '2026-10-16',
-      time: '18:00',
-      hours: 2,
-      content: 'Giải bài toán bằng cách lập phương trình: Dạng toán chuyển động ngược chiều.',
-      homework: 'Lập bảng phân tích 2 bài toán mẫu.',
-      fee: 200000
-    },
-    {
-      id: 's_6',
-      date: '2026-10-19',
-      time: '18:00',
-      hours: 2,
-      content: 'Chữa bài kiểm tra giữa kỳ 1, sửa lỗi sai trình bày và lập luận hình.',
-      homework: 'Chép lại bài số 4 cẩn thận vào vở.',
-      fee: 200000
-    },
-    {
-      id: 's_7',
-      date: '2026-10-22',
-      time: '18:00',
-      hours: 2,
-      content: 'Chuyên đề rút gọn biểu thức chứa căn & các câu hỏi phụ liên quan (x nguyên).',
-      homework: 'Hoàn thiện phiếu ôn tập số 2.',
-      fee: 200000
-    },
-    {
-      id: 's_8',
-      date: '2026-10-25',
-      time: '18:00',
-      hours: 2,
-      content: 'Tổng kết kiến thức tháng 10, thi thử đề 45 phút khảo sát năng lực.',
-      homework: 'Chuẩn bị bài học phần đường tròn tiếp theo.',
-      fee: 200000
-    }
+    { id: 's_1', date: '2026-10-02', startTime: '18:00', endTime: '20:00', hours: 2, fee: 200000 },
+    { id: 's_2', date: '2026-10-05', startTime: '18:00', endTime: '20:00', hours: 2, fee: 200000 },
+    { id: 's_3', date: '2026-10-09', startTime: '18:00', endTime: '20:00', hours: 2, fee: 200000 },
+    { id: 's_4', date: '2026-10-12', startTime: '18:00', endTime: '20:00', hours: 2, fee: 200000 },
+    { id: 's_5', date: '2026-10-16', startTime: '18:00', endTime: '20:00', hours: 2, fee: 200000 },
+    { id: 's_6', date: '2026-10-19', startTime: '18:00', endTime: '20:00', hours: 2, fee: 200000 },
+    { id: 's_7', date: '2026-10-22', startTime: '18:00', endTime: '20:00', hours: 2, fee: 200000 },
+    { id: 's_8', date: '2026-10-25', startTime: '18:00', endTime: '20:00', hours: 2, fee: 200000 }
   ],
-  finance: {
-    amountPaid: 0,
-    paymentNote: 'STK Vietcombank: 0123456789 - Nguyễn Hoàng Phúc (Nội dung: HP Thang 10 Chau)'
-  },
   evaluation: {
-    attitude: { stars: 5, comment: 'Rất nghiêm túc, lễ phép, tập trung nghe giảng và ghi chép bài đầy đủ.' },
-    diligence: { stars: 5, comment: 'Chủ động hoàn thành bài tập về nhà trước giờ học, tích cực hỏi bài.' },
-    knowledge: { stars: 4, comment: 'Đại số nắm rất chắc, phần hình học cần vẽ hình chuẩn xác hơn.' },
+    attitude: { stars: 5, comment: 'Rất nghiêm túc, lễ phép, tập trung nghe giảng.' },
+    diligence: { stars: 5, comment: 'Chủ động học tập và tích cực hỏi bài khi chưa hiểu.' },
+    knowledge: { stars: 4, comment: 'Đại số nắm rất chắc, phần hình học cần vẽ hình cẩn thận hơn.' },
     progress: { stars: 5, comment: 'Tiến bộ vượt trội ở dạng toán giải bài toán bằng cách lập phương trình.' },
-    overallComment: 'Em Châu là học sinh có tư duy rất sáng và tinh thần học hỏi cao. Trong tháng 10 này con đã khắc phục được tật vội vàng khi tính toán. Điểm bài thi thử cuối kỳ vừa rồi đạt 8.75/10.',
-    parentAdvice: 'Nhờ mẹ nhắc con duy trì thói quen dành 20 phút mỗi tối xem lại công thức hình học. Tháng sau gia sư sẽ cho con luyện chuyên sâu các đề thi thử vào lớp 10 chuyên.',
+    overallComment: 'Em Châu là học sinh có tư duy tốt và tinh thần học hỏi cao. Trong tháng 10 này con đã khắc phục được tật vội vàng khi tính toán. Điểm bài thi thử cuối kỳ vừa rồi đạt 8.75/10.',
+    parentAdvice: 'Nhờ gia đình tiếp tục đồng hành và động viên con duy trì việc tự học mỗi ngày. Thầy sẽ chuẩn bị thêm các đề nâng cao vào tháng sau.',
     stampBadge: 'progress',
     reportDate: '2026-10-25'
   }
@@ -109,7 +38,7 @@ const DEFAULT_SAMPLE_STATE = {
 
 // Application State
 let appState = JSON.parse(JSON.stringify(DEFAULT_SAMPLE_STATE));
-const STORAGE_KEY = 'emxuyeu_tutor_app_state_v2';
+const STORAGE_KEY = 'emxuyeu_tutor_app_state_v3';
 
 // -----------------------------------------------------------------------------
 // DOM Elements Cache
@@ -130,9 +59,6 @@ const elements = {
   studentName: document.getElementById('studentName'),
   studentGrade: document.getElementById('studentGrade'),
   subjectName: document.getElementById('subjectName'),
-  parentName: document.getElementById('parentName'),
-  tutorName: document.getElementById('tutorName'),
-  tutorContact: document.getElementById('tutorContact'),
   periodFrom: document.getElementById('periodFrom'),
   periodTo: document.getElementById('periodTo'),
   
@@ -147,13 +73,10 @@ const elements = {
   emptySessionsState: document.getElementById('emptySessionsState'),
   btnAddSession: document.getElementById('btnAddSession'),
   
-  // Finance
+  // Finance Editor
   calcTotalSessions: document.getElementById('calcTotalSessions'),
   calcTotalHours: document.getElementById('calcTotalHours'),
   calcTotalFee: document.getElementById('calcTotalFee'),
-  amountPaid: document.getElementById('amountPaid'),
-  calcRemaining: document.getElementById('calcRemaining'),
-  paymentNote: document.getElementById('paymentNote'),
   
   // Evaluation
   commentAttitude: document.getElementById('commentAttitude'),
@@ -180,9 +103,6 @@ const elements = {
   repStudentName: document.getElementById('repStudentName'),
   repStudentGrade: document.getElementById('repStudentGrade'),
   repSubjectName: document.getElementById('repSubjectName'),
-  repParentName: document.getElementById('repParentName'),
-  repTutorName: document.getElementById('repTutorName'),
-  repTutorContact: document.getElementById('repTutorContact'),
   repPeriodDisplay: document.getElementById('repPeriodDisplay'),
   repStampBadge: document.getElementById('repStampBadge'),
   repStampText: document.getElementById('repStampText'),
@@ -192,11 +112,6 @@ const elements = {
   repTotalSessions: document.getElementById('repTotalSessions'),
   repTotalHours: document.getElementById('repTotalHours'),
   repTotalFee: document.getElementById('repTotalFee'),
-  repAmountPaid: document.getElementById('repAmountPaid'),
-  repRemaining: document.getElementById('repRemaining'),
-  repRemainingWrapper: document.getElementById('repRemainingWrapper'),
-  repPaymentInfoBox: document.getElementById('repPaymentInfoBox'),
-  repPaymentNote: document.getElementById('repPaymentNote'),
   repStarsAttitude: document.getElementById('repStarsAttitude'),
   repCommentAttitude: document.getElementById('repCommentAttitude'),
   repStarsDiligence: document.getElementById('repStarsDiligence'),
@@ -207,9 +122,7 @@ const elements = {
   repCommentProgress: document.getElementById('repCommentProgress'),
   repOverallComment: document.getElementById('repOverallComment'),
   repParentAdvice: document.getElementById('repParentAdvice'),
-  repReportDate: document.getElementById('repReportDate'),
-  repSignatureName: document.getElementById('repSignatureName'),
-  repTutorSignBottom: document.getElementById('repTutorSignBottom')
+  repReportDate: document.getElementById('repReportDate')
 };
 
 // -----------------------------------------------------------------------------
@@ -241,6 +154,20 @@ function formatDateLongVN(dateStr) {
 function getStarString(stars) {
   const count = Math.max(1, Math.min(5, Number(stars) || 5));
   return '⭐'.repeat(count) + '☆'.repeat(5 - count);
+}
+
+function calculateDurationHours(startTime, endTime) {
+  if (!startTime || !endTime) return null;
+  const [sH, sM] = startTime.split(':').map(Number);
+  const [eH, eM] = endTime.split(':').map(Number);
+  
+  if (isNaN(sH) || isNaN(sM) || isNaN(eH) || isNaN(eM)) return null;
+
+  let diffMinutes = (eH * 60 + eM) - (sH * 60 + sM);
+  if (diffMinutes < 0) diffMinutes += 24 * 60; // Cross midnight edge case
+
+  const hours = diffMinutes / 60;
+  return Math.round(hours * 10) / 10; // Round to 1 decimal place
 }
 
 function debounce(func, delay = 250) {
@@ -303,7 +230,7 @@ function loadStateFromStorage() {
 // UI Sync & Rendering
 // -----------------------------------------------------------------------------
 function renderEditorForm() {
-  const { studentInfo, finance, evaluation, theme } = appState;
+  const { studentInfo, evaluation, theme } = appState;
 
   // Set Theme
   setTheme(theme || 'sakura', false);
@@ -312,9 +239,6 @@ function renderEditorForm() {
   elements.studentName.value = studentInfo.name || '';
   elements.studentGrade.value = studentInfo.grade || '';
   elements.subjectName.value = studentInfo.subject || '';
-  elements.parentName.value = studentInfo.parent || '';
-  elements.tutorName.value = studentInfo.tutor || '';
-  elements.tutorContact.value = studentInfo.contact || '';
   elements.periodFrom.value = studentInfo.periodFrom || '';
   elements.periodTo.value = studentInfo.periodTo || '';
 
@@ -330,10 +254,6 @@ function renderEditorForm() {
     elements.avatarPlaceholder.classList.remove('hidden');
     elements.btnRemoveAvatar.classList.add('hidden');
   }
-
-  // Finance
-  elements.amountPaid.value = finance.amountPaid || 0;
-  elements.paymentNote.value = finance.paymentNote || '';
 
   // Evaluation
   elements.commentAttitude.value = evaluation.attitude.comment || '';
@@ -410,19 +330,18 @@ function renderSessionsList() {
         </div>
 
         <div class="form-group">
-          <span class="session-col-label"><i class="fa-regular fa-clock"></i> Giờ học</span>
-          <input type="time" class="session-field-input session-time" value="${s.time || '18:00'}" data-field="time">
+          <span class="session-col-label"><i class="fa-regular fa-clock"></i> Bắt đầu</span>
+          <input type="time" class="session-field-input session-start-time" value="${s.startTime || '18:00'}" data-field="startTime">
+        </div>
+
+        <div class="form-group">
+          <span class="session-col-label"><i class="fa-solid fa-hourglass-end"></i> Kết thúc</span>
+          <input type="time" class="session-field-input session-end-time" value="${s.endTime || '20:00'}" data-field="endTime">
         </div>
 
         <div class="form-group">
           <span class="session-col-label"><i class="fa-solid fa-hourglass-half"></i> Số giờ</span>
           <input type="number" step="0.5" min="0.5" max="10" class="session-field-input session-hours" value="${s.hours || 2}" data-field="hours">
-        </div>
-
-        <div class="form-group">
-          <span class="session-col-label"><i class="fa-solid fa-pen"></i> Nội dung & Dặn dò BTVN</span>
-          <input type="text" class="session-field-input session-content" placeholder="Nội dung kiến thức buổi học..." value="${escapeHtml(s.content || '')}" data-field="content" style="margin-bottom: 4px;">
-          <input type="text" class="session-field-input session-homework" placeholder="Dặn dò / Bài tập về nhà..." value="${escapeHtml(s.homework || '')}" data-field="homework">
         </div>
 
         <div class="form-group">
@@ -436,37 +355,26 @@ function renderSessionsList() {
   });
 }
 
-function escapeHtml(text) {
-  if (!text) return '';
-  return text.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
-
 // -----------------------------------------------------------------------------
 // Live Calculations & Live Preview Sync
 // -----------------------------------------------------------------------------
 function updateCalculationsAndPreview() {
-  const { studentInfo, sessions, finance, evaluation } = appState;
+  const { studentInfo, sessions, evaluation } = appState;
 
   // 1. Calculations
   const totalSessions = sessions.length;
   const totalHours = sessions.reduce((sum, item) => sum + (Number(item.hours) || 0), 0);
   const totalFee = sessions.reduce((sum, item) => sum + (Number(item.fee) || 0), 0);
-  const paid = Number(finance.amountPaid) || 0;
-  const remaining = Math.max(0, totalFee - paid);
 
   // 2. Editor Stats
   elements.calcTotalSessions.textContent = totalSessions;
   elements.calcTotalHours.textContent = totalHours;
   elements.calcTotalFee.textContent = formatCurrency(totalFee);
-  elements.calcRemaining.textContent = formatCurrency(remaining);
 
-  // 3. Update Preview: Student & Header Meta
+  // 3. Update Preview: Student Meta
   elements.repStudentName.textContent = studentInfo.name || 'Họ và tên học sinh';
   elements.repStudentGrade.textContent = studentInfo.grade || 'Lớp...';
   elements.repSubjectName.textContent = studentInfo.subject || 'Môn học';
-  elements.repParentName.textContent = studentInfo.parent || 'Quý Phụ Huynh';
-  elements.repTutorName.textContent = studentInfo.tutor || 'Gia Sư Phụ Trách';
-  elements.repTutorContact.textContent = studentInfo.contact || 'SĐT liên hệ';
 
   // Period Display
   if (studentInfo.periodFrom && studentInfo.periodTo) {
@@ -507,60 +415,39 @@ function updateCalculationsAndPreview() {
     elements.repStampBadge.innerHTML = `<i class="fa-solid ${stampConfig.icon}"></i><span>${stampConfig.text}</span>`;
   }
 
-  // 4. Update Preview: Table of Sessions
+  // 4. Update Preview: Table of Sessions (with Start & End Time)
   elements.repSessionCountBadge.textContent = `${totalSessions} Buổi Học`;
   elements.repSessionsBody.innerHTML = '';
 
   if (sessions.length === 0) {
     const tr = document.createElement('tr');
-    tr.innerHTML = `<td colspan="5" style="text-align:center; padding: 20px; color: #a491ac;">Chưa có buổi học nào được thêm.</td>`;
+    tr.innerHTML = `<td colspan="5" style="text-align:center; padding: 22px; color: #a491ac;">Chưa có buổi học nào được thêm.</td>`;
     elements.repSessionsBody.appendChild(tr);
   } else {
     sessions.forEach((s, idx) => {
       const tr = document.createElement('tr');
       const dateStr = formatDateVN(s.date);
-      const timeStr = s.time || '';
+      const timeRangeStr = (s.startTime && s.endTime) ? `${s.startTime} – ${s.endTime}` : (s.startTime || '--:--');
 
       tr.innerHTML = `
         <td class="rep-cell-stt">${idx + 1}</td>
         <td>
           <div class="rep-cell-date">${dateStr || '--'}</div>
-          ${timeStr ? `<div class="rep-cell-time">${timeStr}</div>` : ''}
         </td>
-        <td style="font-weight: 600;">${s.hours || 0} giờ</td>
         <td>
-          <div class="rep-cell-content-title">${escapeHtml(s.content || 'Nội dung buổi học')}</div>
-          ${s.homework ? `<div class="rep-cell-homework"><i class="fa-solid fa-pencil" style="font-size: 9px; margin-right: 3px;"></i>${escapeHtml(s.homework)}</div>` : ''}
+          <div class="rep-cell-timerange"><i class="fa-regular fa-clock"></i> ${timeRangeStr}</div>
         </td>
+        <td class="rep-cell-duration">${s.hours || 0} giờ</td>
         <td class="rep-cell-fee">${formatCurrency(s.fee)}</td>
       `;
       elements.repSessionsBody.appendChild(tr);
     });
   }
 
-  // 5. Update Preview: Financial Summary
+  // 5. Update Preview: Financial Summary (3 balanced pills)
   elements.repTotalSessions.textContent = `${totalSessions} buổi`;
   elements.repTotalHours.textContent = `${totalHours} giờ`;
   elements.repTotalFee.textContent = formatCurrency(totalFee);
-  elements.repAmountPaid.textContent = formatCurrency(paid);
-  elements.repRemaining.textContent = formatCurrency(remaining);
-
-  if (remaining <= 0) {
-    elements.repRemainingWrapper.style.borderColor = 'var(--color-success)';
-    elements.repRemaining.style.color = 'var(--color-success)';
-    elements.repRemaining.textContent = 'Đã hoàn thành';
-  } else {
-    elements.repRemainingWrapper.style.borderColor = '#f7b4b1';
-    elements.repRemaining.style.color = 'var(--color-danger)';
-  }
-
-  // Payment Note
-  if (finance.paymentNote && finance.paymentNote.trim()) {
-    elements.repPaymentInfoBox.classList.remove('hidden');
-    elements.repPaymentNote.textContent = finance.paymentNote.trim();
-  } else {
-    elements.repPaymentInfoBox.classList.add('hidden');
-  }
 
   // 6. Update Preview: Evaluation Stars & Comments
   elements.repStarsAttitude.textContent = getStarString(evaluation.attitude.stars);
@@ -578,22 +465,15 @@ function updateCalculationsAndPreview() {
   elements.repOverallComment.textContent = evaluation.overallComment || 'Con có tinh thần học tập tốt, tiến bộ đều qua các buổi học.';
   elements.repParentAdvice.textContent = evaluation.parentAdvice || 'Nhờ phụ huynh đồng hành và động viên con duy trì việc tự học mỗi ngày.';
 
-  // 7. Update Preview: Footer Signature & Date
+  // 7. Update Preview: Footer Clean Date
   elements.repReportDate.textContent = formatDateLongVN(evaluation.reportDate || new Date().toISOString().split('T')[0]);
-
-  // Extract tutor first name for cute handwritten signature
-  const tutorFull = studentInfo.tutor || 'Gia Sư';
-  const nameParts = tutorFull.replace(/^(Thầy|Cô|Anh|Chị)\s+/i, '').trim().split(' ');
-  const tutorCallName = nameParts[nameParts.length - 1] || 'Gia Sư';
-  elements.repSignatureName.textContent = tutorCallName;
-  elements.repTutorSignBottom.textContent = tutorFull;
 
   // Save changes
   debouncedSaveState();
 }
 
 // -----------------------------------------------------------------------------
-// Event Listeners: Student Info
+// Event Listeners: Student Info & Dynamic Sessions
 // -----------------------------------------------------------------------------
 function setupEventListeners() {
   // Input fields binding
@@ -601,13 +481,8 @@ function setupEventListeners() {
     { el: elements.studentName, path: ['studentInfo', 'name'] },
     { el: elements.studentGrade, path: ['studentInfo', 'grade'] },
     { el: elements.subjectName, path: ['studentInfo', 'subject'] },
-    { el: elements.parentName, path: ['studentInfo', 'parent'] },
-    { el: elements.tutorName, path: ['studentInfo', 'tutor'] },
-    { el: elements.tutorContact, path: ['studentInfo', 'contact'] },
     { el: elements.periodFrom, path: ['studentInfo', 'periodFrom'] },
     { el: elements.periodTo, path: ['studentInfo', 'periodTo'] },
-    { el: elements.amountPaid, path: ['finance', 'amountPaid'], isNumber: true },
-    { el: elements.paymentNote, path: ['finance', 'paymentNote'] },
     { el: elements.commentAttitude, path: ['evaluation', 'attitude', 'comment'] },
     { el: elements.commentDiligence, path: ['evaluation', 'diligence', 'comment'] },
     { el: elements.commentKnowledge, path: ['evaluation', 'knowledge', 'comment'] },
@@ -618,12 +493,10 @@ function setupEventListeners() {
     { el: elements.reportDate, path: ['evaluation', 'reportDate'] }
   ];
 
-  simpleBinds.forEach(({ el, path, isNumber }) => {
+  simpleBinds.forEach(({ el, path }) => {
     if (!el) return;
     el.addEventListener('input', () => {
       let val = el.value;
-      if (isNumber) val = Number(val) || 0;
-      
       let target = appState;
       for (let i = 0; i < path.length - 1; i++) {
         target = target[path[i]];
@@ -675,8 +548,8 @@ function setupEventListeners() {
 
   // Star Rating Click Handlers
   document.querySelectorAll('.star-rating').forEach(container => {
-    const dataName = container.dataset.name; // e.g. ratingAttitude
-    const criteriaKey = dataName.replace('rating', '').toLowerCase(); // e.g. attitude
+    const dataName = container.dataset.name;
+    const criteriaKey = dataName.replace('rating', '').toLowerCase();
 
     container.addEventListener('click', (e) => {
       const btn = e.target.closest('.star-btn');
@@ -701,10 +574,9 @@ function setupEventListeners() {
     const newSession = {
       id: 's_' + Date.now(),
       date: today,
-      time: '18:00',
+      startTime: '18:00',
+      endTime: '20:00',
       hours: 2,
-      content: '',
-      homework: '',
       fee: defaultFee
     };
 
@@ -717,8 +589,6 @@ function setupEventListeners() {
     const lastCard = elements.sessionsContainer.lastElementChild;
     if (lastCard) {
       lastCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      const input = lastCard.querySelector('.session-content');
-      if (input) input.focus();
     }
   });
 
@@ -737,6 +607,16 @@ function setupEventListeners() {
       session[field] = Number(target.value) || 0;
     } else {
       session[field] = target.value;
+    }
+
+    // Auto calculate hours if user edits startTime or endTime
+    if (field === 'startTime' || field === 'endTime') {
+      const autoHours = calculateDurationHours(session.startTime, session.endTime);
+      if (autoHours !== null && autoHours > 0) {
+        session.hours = autoHours;
+        const hoursInput = card.querySelector('.session-hours');
+        if (hoursInput) hoursInput.value = autoHours;
+      }
     }
 
     updateCalculationsAndPreview();
@@ -791,15 +671,11 @@ function setupEventListeners() {
           name: '',
           grade: '',
           subject: '',
-          parent: '',
-          tutor: '',
-          contact: '',
           periodFrom: '',
           periodTo: '',
           avatar: ''
         },
         sessions: [],
-        finance: { amountPaid: 0, paymentNote: '' },
         evaluation: {
           attitude: { stars: 5, comment: '' },
           diligence: { stars: 5, comment: '' },
@@ -885,7 +761,6 @@ async function exportAsImage() {
   showExportLoading('Đang xử lý ảnh chất lượng cao...', 'Hệ thống đang chụp phiếu độ phân giải 2.5x cực nét để gửi Zalo/phụ huynh');
 
   try {
-    // Wait a brief tick for fonts & images to settle
     await new Promise(r => setTimeout(r, 200));
 
     const canvas = await html2canvas(paper, {
@@ -947,7 +822,6 @@ async function exportAsPDF() {
   try {
     await new Promise(r => setTimeout(r, 200));
 
-    // Render high quality canvas
     const canvas = await html2canvas(paper, {
       scale: 2.2,
       useCORS: true,
@@ -967,7 +841,6 @@ async function exportAsPDF() {
     const imgData = canvas.toDataURL('image/jpeg', 0.95);
     const { jsPDF } = window.jspdf;
 
-    // A4 dimensions in mm: 210 x 297
     const pdf = new jsPDF('p', 'mm', 'a4');
     const pdfWidth = 210;
     const pdfHeight = 297;
@@ -978,12 +851,9 @@ async function exportAsPDF() {
     const canvasHeight = canvas.height;
     const imgHeightInPdf = (canvasHeight * contentWidth) / canvasWidth;
 
-    // Single page fit or multi-page slice
     if (imgHeightInPdf <= (pdfHeight - (margin * 2))) {
-      // Perfect single page
       pdf.addImage(imgData, 'JPEG', margin, margin, contentWidth, imgHeightInPdf);
     } else {
-      // Multi-page handling
       let heightLeft = imgHeightInPdf;
       let position = margin;
       const pageHeightUsable = pdfHeight - (margin * 2);
