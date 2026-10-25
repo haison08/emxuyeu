@@ -1,0 +1,18 @@
+{
+  "name": "emxuyeu",
+  "version": "1.0.0",
+  "description": "Sổ phiếu đánh giá học sinh và theo dõi học phí dành cho gia sư phong cách pastel",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "tutor",
+    "evaluation",
+    "report",
+    "pastel",
+    "emxuyeu"
+  ],
+  "author": "emxuyeu",
+  "license": "MIT"
+}
